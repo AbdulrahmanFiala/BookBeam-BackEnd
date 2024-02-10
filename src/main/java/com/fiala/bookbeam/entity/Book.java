@@ -1,7 +1,8 @@
 package com.fiala.bookbeam.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
+
 
 @Entity
 @Table(name ="book")
