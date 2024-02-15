@@ -1,6 +1,8 @@
 package com.fiala.bookbeam.service;
 
 import com.fiala.bookbeam.dao.BookRepository;
+import com.fiala.bookbeam.dao.CheckoutRepository;
+import com.fiala.bookbeam.dao.ReviewRepository;
 import com.fiala.bookbeam.entity.Book;
 import com.fiala.bookbeam.requestmodels.AddBookRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +15,13 @@ import java.util.Optional;
 @Transactional
 public class AdminService {
     private BookRepository bookRepository;
-
+    private ReviewRepository reviewRepository;
+    private CheckoutRepository checkoutRepository;
     @Autowired
-    public AdminService(BookRepository bookRepository) {
+    public AdminService(BookRepository bookRepository, ReviewRepository reviewRepository, CheckoutRepository checkoutRepository) {
         this.bookRepository = bookRepository;
+        this.reviewRepository = reviewRepository;
+        this.checkoutRepository = checkoutRepository;
     }
 
     public void increaseBookQuantity(Long bookId) throws Exception{
@@ -39,6 +44,16 @@ public class AdminService {
         book.get().setCopies(book.get().getCopies()-1);
 
         bookRepository.save(book.get());
+    }
+
+    public void deleteBook(Long bookId) throws Exception{
+        Optional<Book> book = bookRepository.findById(bookId);
+        if (!book.isPresent() ){
+            throw new Exception("Book not found");
+        }
+        bookRepository.delete(book.get());
+        reviewRepository.deleteAllByBookId(bookId);
+        checkoutRepository.deleteAllByBookId(bookId);
     }
 
 
