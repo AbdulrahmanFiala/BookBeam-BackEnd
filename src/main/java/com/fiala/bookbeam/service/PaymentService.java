@@ -2,12 +2,15 @@ package com.fiala.bookbeam.service;
 
 import com.fiala.bookbeam.dao.MessageRepository;
 import com.fiala.bookbeam.dao.PaymentRepository;
+import com.fiala.bookbeam.entity.Payment;
 import com.fiala.bookbeam.requestmodels.PaymentInfoRequest;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,6 +41,17 @@ public class PaymentService {
         return PaymentIntent.create(params);
     }
 
+    public ResponseEntity<String> stripePayment(String userEmail)
+        throws Exception{
+        Payment payment = paymentRepository.findByUserEmail(userEmail);
+
+        if(payment == null){
+            throw new Exception("Payment information is missing");
+        }
+        payment.setAmount(00.00);
+        paymentRepository.save(payment);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 
 
