@@ -2,11 +2,16 @@ package com.fiala.bookbeam.service;
 
 import com.fiala.bookbeam.dao.MessageRepository;
 import com.fiala.bookbeam.dao.PaymentRepository;
+import com.fiala.bookbeam.requestmodels.PaymentInfoRequest;
 import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.PaymentIntent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.*;
 
 @Service
 @Transactional
@@ -19,6 +24,22 @@ public class PaymentService {
         this.paymentRepository = paymentRepository;
         Stripe.apiKey = secretKey;
     }
+
+    public PaymentIntent createPaymentIntent(PaymentInfoRequest paymentInfoRequest)
+    throws StripeException {
+        List<String> paymentMethodTypes = new ArrayList<>();
+        paymentMethodTypes.add("card");
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("amount", paymentInfoRequest.getAmount());
+        params.put("currency", paymentInfoRequest.getCurrency());
+        params.put("payment_method_types", paymentMethodTypes);
+
+        return PaymentIntent.create(params);
+    }
+
+
+
 
 
 }
