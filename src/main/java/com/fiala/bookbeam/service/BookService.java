@@ -88,7 +88,7 @@ public class BookService {
             payment.setUserEmail(userEmail);
             paymentRepository.save(payment);
         }
-        
+
         book.get().setCopiesAvailable(book.get().getCopiesAvailable() - 1);
         bookRepository.save(book.get());
 
@@ -161,6 +161,23 @@ public class BookService {
         book.get().setCopiesAvailable(book.get().getCopiesAvailable() +1);
 
         bookRepository.save(book.get());
+
+        SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date d1 = sdf.parse(validateCheckout.getReturnDate());
+        Date d2 = sdf.parse(LocalDate.now().toString());
+
+        TimeUnit time = TimeUnit.DAYS;
+
+        double differenceInTime = time.convert(d1.getTime()
+        - d2.getTime(), TimeUnit.MILLISECONDS);
+
+        if (differenceInTime < 0){
+            Payment payment = paymentRepository.findByUserEmail(userEmail);
+
+            payment.setAmount(payment.getAmount() + (differenceInTime * -1));
+            paymentRepository.save(payment);
+        }
         checkoutRepository.deleteById(validateCheckout.getId());
 
         History history = new History(userEmail,
