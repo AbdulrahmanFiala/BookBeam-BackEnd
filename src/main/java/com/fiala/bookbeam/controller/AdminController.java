@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("https://bookbeam-1nzt7ybq0-abdulrahmanfiala.vercel.app")
+@CrossOrigin("https://bookbeam.vercel.app")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {

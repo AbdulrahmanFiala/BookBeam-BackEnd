@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
 
-    private String[] theAllowedOrigins = { "https://bookbeam-1nzt7ybq0-abdulrahmanfiala.vercel.app", "https://bookbeam-1nzt7ybq0-abdulrahmanfiala.vercel.app" };
+    private String[] theAllowedOrigins = { "https://bookbeam.vercel.app"};
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {

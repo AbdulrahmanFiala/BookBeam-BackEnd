@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("https://bookbeam-1nzt7ybq0-abdulrahmanfiala.vercel.app")
+@CrossOrigin("https://bookbeam.vercel.app")
 @RestController
 @RequestMapping("/api/payment/secure")
 public class PaymentController {
