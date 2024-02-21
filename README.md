@@ -13,7 +13,7 @@ BookBeam is a library web application designed to efficiently manage web-based l
 - Return a book.
 - Renew a book loan.
 - Browse previously checked-out books.
-- Pay fees for late books.
+- Pay fees for late books using Stripe.
 - Ask questions to the admin.
 - Explore previously answered questions.
 
