@@ -56,8 +56,15 @@ BookBeam is a library web application designed to efficiently manage web-based l
    mv .env.example .env
 
 6. Open the .env file and fill it with your database credentials, Okta credentials, and Stripe credentials.
-
-7. Move back to the root directory of the project and run the project using Maven:
+   ```plaintext
+   MYSQL_DATABASE=your_database_name
+   MYSQL_USER=your_database_username
+   MYSQL_PASSWORD=your_database_password
+   OCTA_CLIENT_ID=your_OKTA_client_id
+   OCTA_ISSUER=your_OKTA_issuer
+   STRIPE_SECRET_KEY=your_STRIPE_secret_key
+   ```
+8. Move back to the root directory of the project and run the project using Maven:
    ```bash
    cd ../../
    mvn spring-boot:run
