@@ -9,8 +9,6 @@ import com.fiala.bookbeam.entity.Checkout;
 import com.fiala.bookbeam.entity.History;
 import com.fiala.bookbeam.entity.Payment;
 import com.fiala.bookbeam.responsemodels.ShelfCurrentLoansResponse;
-import lombok.Data;
-import org.hibernate.annotations.Check;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -97,7 +95,6 @@ public class BookService {
                 LocalDate.now().toString(),
                 LocalDate.now().plusDays(7).toString(),
                 book.get().getId()
-
         );
         checkoutRepository.save(checkout);
         return book.get();
