@@ -1,6 +1,5 @@
 package com.fiala.bookbeam.service;
 
-import com.fiala.bookbeam.dao.BookRepository;
 import com.fiala.bookbeam.dao.ReviewRepository;
 import com.fiala.bookbeam.entity.Review;
 import com.fiala.bookbeam.requestmodels.ReviewRequest;
