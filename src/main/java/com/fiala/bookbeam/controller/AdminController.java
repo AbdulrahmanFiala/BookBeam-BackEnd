@@ -1,13 +1,9 @@
 package com.fiala.bookbeam.controller;
 
-import com.fiala.bookbeam.entity.Book;
-import com.fiala.bookbeam.entity.Message;
 import com.fiala.bookbeam.requestmodels.AddBookRequest;
 import com.fiala.bookbeam.service.AdminService;
-import com.fiala.bookbeam.service.MessagesService;
 import com.fiala.bookbeam.utils.ExtractJWT;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin("http://localhost:3000")

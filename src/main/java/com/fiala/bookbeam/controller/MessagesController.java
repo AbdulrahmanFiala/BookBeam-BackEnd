@@ -2,7 +2,6 @@ package com.fiala.bookbeam.controller;
 
 import com.fiala.bookbeam.entity.Message;
 import com.fiala.bookbeam.requestmodels.AdminQuestionRequest;
-import com.fiala.bookbeam.service.BookService;
 import com.fiala.bookbeam.service.MessagesService;
 import com.fiala.bookbeam.utils.ExtractJWT;
 import org.springframework.beans.factory.annotation.Autowired;

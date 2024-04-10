@@ -1,7 +1,6 @@
 package com.fiala.bookbeam.controller;
 
 import com.fiala.bookbeam.requestmodels.PaymentInfoRequest;
-import com.fiala.bookbeam.service.MessagesService;
 import com.fiala.bookbeam.service.PaymentService;
 import com.fiala.bookbeam.utils.ExtractJWT;
 import com.stripe.exception.StripeException;
