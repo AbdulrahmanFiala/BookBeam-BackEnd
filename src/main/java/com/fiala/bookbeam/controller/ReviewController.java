@@ -5,7 +5,7 @@ import com.fiala.bookbeam.service.ReviewService;
 import com.fiala.bookbeam.utils.ExtractJWT;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("https://bookbeam.vercel.app")
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/api/reviews")
 public class ReviewController {
